@@ -1,0 +1,23 @@
+server:
+  port: 83
+
+spring:
+  application:
+    name: nacos-order-consumer
+
+  cloud:
+    nacos:
+      discovery:
+        server-addr: 192.168.157.136:1111
+    loadbalancer:
+      nacos:
+        enabled: false # 这个是开启nacos的负载均衡，就不会再用spring带的loadbalancer
+    sentinel:
+      transport:
+        dashboard: localhost:8080
+        port: 8719
+
+
+feign:
+  sentinel:
+    enabled: true

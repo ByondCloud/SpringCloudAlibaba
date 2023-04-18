@@ -1,0 +1,26 @@
+server:
+  port: 2003
+
+spring:
+  application:
+    name: seata-account-service
+  cloud:
+    nacos:
+      discovery:
+        server-addr: 192.168.157.136:1111
+
+  datasource:
+    driver-class-name: com.mysql.cj.jdbc.Driver
+    url: jdbc:mysql://localhost:3306/seata_storage
+    username: root
+    password: 123456
+seata:
+  tx-service-group: my_test_tx_group
+  enabled: true
+  service:
+    vgroup-mapping.my_test_tx_group: seata-server
+    grouplist.seata-server: 127.0.0.1:8091
+mybatis:
+  mapper-locations: classpath:mapper/*.xml
+
+

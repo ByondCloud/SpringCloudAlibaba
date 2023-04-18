@@ -1,0 +1,26 @@
+server:
+  port: 8401
+
+spring:
+  application:
+    name: cloud-sentinel-service
+
+  cloud:
+    nacos:
+      discovery:
+        server-addr: 192.168.157.136:1111
+    sentinel:
+      transport:
+        dashboard: localhost:8080 # 可视化地址
+        port: 8719 # 默认为8719，如被占用，会自动+1.直到找到未被占用的端口
+
+        datasource:
+          ds1:
+            nacos:
+              server-addr: 192.168.157.130:3333
+              namespace: d91a869c-3b7e-419f-a8d6-7bb13b1ac617
+              dataId: ${spring.application.name}
+              groupId: DEFAULT_GROUP
+              data-type: json
+              rule-type: flow
+
